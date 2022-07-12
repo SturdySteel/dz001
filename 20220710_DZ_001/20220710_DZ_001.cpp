@@ -1,20 +1,25 @@
-// 20220710_DZ_001.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include "Drob.h"
+
+void showResult(std::string mes, char sign, Drob& a, Drob& b, Drob res)
+{    
+    std::cout << mes << a.getNum() << "/" << a.getDenom() << ' ' << sign << ' ';
+    std::cout << b.getNum() << "/" << b.getDenom() << " = ";
+    std::cout << res.getNum() << "/" << res.getDenom();
+    std::cout << '\n';
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    setlocale(LC_ALL, "ru");
+
+    Drob a{ 3,4 };
+    Drob b{ 5,6 };
+    
+    showResult("Сложение дробей: ", '+', a, b, a.addFractions(b));
+    showResult("Вычитание дробей: ", '-', a, b, a.subFractions(b));
+    showResult("Умножение дробей: ", '*', a, b, a.multFractions(b));
+    showResult("Деление дробей: ", '/', a, b, a.divFractions(b));
+        
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
